@@ -1,0 +1,14 @@
+<?php
+/**
+ * @var $block \Freire\HrefLang\Block\HrefLang
+ */
+
+$tags = $block->getHrefLangTags();
+$defaultLanguage = $block->getDefaultLanguage();
+
+if ($tags && $block->isModuleEnabled()) {
+    foreach ($tags as $hrefLang => $url) {
+        echo "<link rel=\"alternate\" hreflang=\"$hrefLang\" href=\"$url\" />";
+    }
+    echo "<link rel=\"alternate\" hreflang=\"$defaultLanguage\" href=\"x-default\" />";
+}
